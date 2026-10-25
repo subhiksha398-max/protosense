@@ -1,0 +1,4 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+html{scroll-behavior:smooth}body{background:#0a0f1e;color:#e8edf7;font-family:Inter,system-ui,sans-serif}
+@keyframes pulse2{0%,100%{opacity:.25}50%{opacity:.9}}.node{animation:pulse2 3s infinite}
+@media print{aside,.noprint{display:none!important}body{background:#fff;color:#000}.card{border:1px solid #ccc!important;background:#fff!important}}

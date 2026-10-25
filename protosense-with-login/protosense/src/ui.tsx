@@ -1,0 +1,13 @@
+import {ReactNode} from 'react'
+import {X} from 'lucide-react'
+const C:Record<string,string>={Resolved:'bg-emerald-500/15 text-emerald-300',Verified:'bg-cyan-500/15 text-cyan-300','Under Investigation':'bg-amber-500/15 text-amber-300','Repeated Failure':'bg-rose-500/15 text-rose-300',Pending:'bg-slate-500/20 text-slate-300',Completed:'bg-blue-500/15 text-blue-300','Not Effective':'bg-rose-500/15 text-rose-300'}
+export const Badge=({t}:{t:string})=><span className={`rounded-full px-2 py-0.5 text-xs whitespace-nowrap ${C[t]||''}`}>{t}</span>
+export const Card=({children,className=''}:{children:ReactNode;className?:string})=><div className={`card rounded-xl border border-white/10 bg-white/[0.03] p-4 ${className}`}>{children}</div>
+export const Metric=({label,value,note}:{label:string;value:number|string;note:string})=><Card><div className="text-xs text-slate-400">{label}</div><div className="mt-1 text-3xl font-semibold text-cyan-300">{value}</div><div className="text-xs text-slate-500">{note}</div></Card>
+export const inp='w-full rounded-lg border border-white/10 bg-[#0d1426] px-3 py-2 text-sm outline-none focus:border-cyan-400'
+export const btn='rounded-lg bg-cyan-500 px-4 py-2 text-sm font-medium text-slate-900 hover:bg-cyan-400 transition'
+export const btn2='rounded-lg border border-white/15 px-4 py-2 text-sm hover:bg-white/5 transition'
+export const Field=({label,hint,err,children}:{label:string;hint?:string;err?:string;children:ReactNode})=><label className="block"><span className="mb-1 block text-xs text-slate-300">{label}</span>{children}{err?<span className="text-xs text-rose-400">{err}</span>:hint&&<span className="text-xs text-slate-500">{hint}</span>}</label>
+export function Modal({title,onClose,children}:{title:string;onClose:()=>void;children:ReactNode}){return <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" onClick={onClose}><div className="max-h-[85vh] w-full max-w-xl overflow-auto rounded-xl border border-white/10 bg-[#0d1426] p-5" onClick={e=>e.stopPropagation()}><div className="mb-3 flex justify-between"><h3 className="font-semibold">{title}</h3><button onClick={onClose}><X size={18}/></button></div>{children}</div></div>}
+export const Toast=({m}:{m:{t:string;ok:boolean}|null})=>m?<div className={`fixed bottom-4 right-4 z-[60] rounded-lg px-4 py-2 text-sm shadow-lg ${m.ok?'bg-emerald-600':'bg-rose-600'}`}>{m.t}</div>:null
+export const Disclaimer=()=><div className="rounded-lg border border-purple-400/30 bg-purple-500/10 p-3 text-xs text-purple-200">Decision-support only. Scores come from a demo matching algorithm over sample records; they are not calibrated probabilities or validated predictions. Verify every suggestion yourself.</div>
