@@ -25,7 +25,9 @@ CORS(
     automatic_options=True,
     supports_credentials=False
 )
-
+@app.route("/")
+def home():
+    return "backend is running"
 db.init()
 
 STATUSES = {
